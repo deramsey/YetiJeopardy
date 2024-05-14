@@ -62,4 +62,18 @@ function showQuestion(event) {
             modal.style.display = 'none';
         }
     };
+
+    // Change the color of the selected question
+    event.target.classList.add('selected');
 }
+
+// CSS class for the selected question
+document.head.insertAdjacentHTML('beforeend', `
+<style>
+    .selected {
+        background-color: #ffcccb !important;
+        color: #000 !important;
+        cursor: default;
+    }
+</style>
+`);
