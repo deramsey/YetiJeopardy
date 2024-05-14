@@ -1,4 +1,3 @@
-// script.js
 document.getElementById('csvFileInput').addEventListener('change', handleFileSelect, false);
 
 function handleFileSelect(event) {
@@ -14,10 +13,10 @@ function handleFileSelect(event) {
 }
 
 function parseCSV(data) {
-    const lines = data.split('\n');
-    const categories = lines[0].split(',');
-    const questions = lines.slice(1).map(line => line.split(','));
-    
+    const lines = data.trim().split('\n');
+    const categories = lines[0].split(',').slice(0, 6); // Ensure only 6 categories are taken
+    const questions = lines.slice(1, 6).map(line => line.split(',').slice(0, 6)); // Ensure only 5 questions per category
+
     createGameBoard(categories, questions);
 }
 
@@ -32,16 +31,17 @@ function createGameBoard(categories, questions) {
         gameBoard.appendChild(categoryDiv);
     });
 
-    questions.forEach((row, rowIndex) => {
-        row.forEach((question, colIndex) => {
+    for (let rowIndex = 0; rowIndex < 5; rowIndex++) {
+        for (let colIndex = 0; colIndex < 6; colIndex++) {
+            const question = questions[rowIndex][colIndex];
             const questionDiv = document.createElement('div');
             questionDiv.className = 'question';
             questionDiv.textContent = (rowIndex + 1) * 100;
-            questionDiv.dataset.question = question;
+            questionDiv.dataset.question = question || 'No question';
             questionDiv.addEventListener('click', showQuestion);
             gameBoard.appendChild(questionDiv);
-        });
-    });
+        }
+    }
 }
 
 function showQuestion(event) {
