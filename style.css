@@ -1,0 +1,83 @@
+/* styles.css */
+*{
+    box-sizing: border-box;
+    color: white;
+    text-transform: uppercase;
+    font-family: "Freeman", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #2200ff;
+}
+
+h1{
+    font-size: 4vw;
+}
+
+#gameBoard {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+    width: 80%;
+    margin: 20px auto;
+}
+
+.category, .question {
+    padding: 10px;
+    background-color: #1f00dd;
+    color: white;
+    border: 2px solid #ddd;
+    cursor: pointer;
+    aspect-ratio: 16/6;
+    font-size: 2em;
+    padding-top: 10%;
+}
+
+.category {
+    font-weight: bold;
+    background-color: #1100bb;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #2200ff;
+    margin: 15% auto;
+    padding: 20px;
+    aspect-ratio: 16/9;
+    border: 1px solid #888;
+    width: 100%;
+    max-width: 600px;
+    font-size: 2em;
+    
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
